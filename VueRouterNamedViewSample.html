@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-sacle=1.0">
+    <title>Vue Nested Router Sample</title>
+</head>
+<body>
+    <div id="app">
+        <router-view name="header"></router-view>
+        <router-view></router-view>
+        <router-view name="footer"></router-view>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/vue-router"></script>
+<script>
+    var Body = {template :'<div><h1>Body</h1></div>'};
+    var Header = {template :'<div><h1>Header</h1></div>'};
+    var Footer = {template :'<div><h1>Footer</h1></div>'};
+
+    var LoginBody={template:'<h1>loginBody</h1>'};
+    var LoginHeader={template:'<h1>LoginHeader</h1>'};
+    var LoginFooter={template:'<h1>LoginFooter</h1>'};
+
+    var router = new VueRouter({
+        routes:[
+            {
+                path:'/',
+                components:{
+                    default:Body,
+                    header:Header,
+                    footer:Footer
+                }
+            },
+            {
+                path:'/login',
+                components:{
+                    default:LoginBody,
+                    header:LoginHeader,
+                    footer:LoginFooter
+                }
+            }
+        ]
+    })
+
+    var app = new Vue({
+        router
+    }).$mount('#app')
+
+</script>
+</body>
+</html>

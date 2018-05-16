@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue with Axios Sample</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="getData">프레임워크 목록 가져오기</button>
+        <h1>{{hello}}</h1>
+        <input>{{hello}}</input>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        let a = {};
+        new Vue({
+            el:'#app',
+            methods:{
+                getData:function(){
+                    axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                        .then(function(response){
+                            console.log(response);
+                            a = response.data.fe1;
+
+
+                        })
+                }
+            },
+            data:{
+
+            },
+            computed: {
+                hello:function(){
+                    console.log(this.a)
+                    return this.a;
+                }
+            }
+
+        })
+    </script>
+
+</body>
+</html>
+
+<!--HTTP GET 요청-->
+<!--axios.get('URL주소').then().catch();-->
+
+<!--HTTP POST 요청-->
+<!--axios.post('URL주소').then().catch();-->
+
+<!--HHTP 요청에 대한 옵션 속성 정의-->
+<!--axios({-->
+    <!--method:'get',-->
+    <!--url:'URL주소'-->
+<!--)};-->
